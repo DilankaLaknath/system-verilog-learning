@@ -2,6 +2,8 @@
   This code describes a full_adder circuit
 */
 
+// Since full adder is a combinational circuit it doesn't have a clock
+
 module full_adder 
 (   //port declaration
   input  logic a   ,

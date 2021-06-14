@@ -13,3 +13,9 @@ In Test bench,
 * Bit Keyword have only two stages
     - 1
     - 0
+
+* We usually do things at pose edge
+* We don't mix pose edge nd neg edge usually
+    - In cases like DDR(RAM) we mix both
+
+* We can find errors in elaborate log file (We can find the location in the error message)

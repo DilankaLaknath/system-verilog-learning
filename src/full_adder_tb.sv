@@ -14,7 +14,7 @@ module full_adder_tb ();
   //clock generation 
   initial begin
     clk = 0;
-    forever #(CLK_PERIOD/2) clk <= ~clk;
+    forever #(CLK_PERIOD/2) clk <= ~clk; // Forever syntax to happen over and over again
   end
 
   // Declare input and output ports of test bench
@@ -24,13 +24,12 @@ module full_adder_tb ();
   logic sum   ;
   logic c_out ;
 
-  full_adder fa (.*); // module instantiation --> use wildcard
+  full_adder fa (.*); // module instantiation --> use wildcard (Use when it takes the same name)
 
 //Instead of doing that we can do it by the following way
 /*
   full_adder fa 
   (
-      .clk(clk),
       .a(a),
       .b(b),
       .c_in(C_in),
@@ -57,6 +56,7 @@ module full_adder_tb ();
     c_in <= 1;
 
     #(CLK_PERIOD*2); // leave two clock cycle delay
+
     @(posedge clk);
     a  <= 1;
     b  <= 1;
