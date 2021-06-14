@@ -1,10 +1,16 @@
 module full_adder_tb ();
 
+  //time units
   timeunit 1ns;
   timeprecision 1ps;
 
-  localparam CLK_PERIOD = 10;
+  localparam CLK_PERIOD = 10; //constant in time units
   logic clk;
+
+//All initial begins are run parallely
+//Inside the initial begin line by line execution happen
+
+  //clock generation 
   initial begin
     clk = 0;
     forever #(CLK_PERIOD/2) clk <= ~clk;
@@ -16,8 +22,20 @@ module full_adder_tb ();
   logic sum   ;
   logic c_out ;
 
-  full_adder fa (.*);
+  full_adder fa (.*); // module instantiation --> use wildcard
 
+//Instead of doing that we can do it by the following way
+/*
+  full_adder fa 
+  (
+      .clk(clk),
+      .a(a),
+      .b(b),
+      .c_in(C_in),
+      .sum(sum),
+      .c_out(c_out)
+  );
+*/
 
   initial begin
     // Simulation starts
