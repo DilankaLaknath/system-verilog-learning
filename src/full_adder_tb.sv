@@ -5,10 +5,11 @@ module full_adder_tb ();
   timeprecision 1ps;
 
   localparam CLK_PERIOD = 10; //constant in time units
-  logic clk;
 
-//All initial begins are run parallely
-//Inside the initial begin line by line execution happen
+  logic clk; // Declare clock
+
+  //All initial begins are run parallely
+  //Inside the initial begin line by line execution happen
 
   //clock generation 
   initial begin
@@ -16,8 +17,9 @@ module full_adder_tb ();
     forever #(CLK_PERIOD/2) clk <= ~clk;
   end
 
+  // Declare input and output ports of test bench
   logic a     = 0;
-  logic b     ; // = 0, intentional
+  logic b     ; // = 0, intentionally leave un asigned to identify red indication.
   logic c_in  = 0;
   logic sum   ;
   logic c_out ;
@@ -39,8 +41,9 @@ module full_adder_tb ();
 
   initial begin
     // Simulation starts
+    //checks at positive edge of the clock
 
-    @(posedge clk);
+    @(posedge clk); // leave 3 clock cycle delay to identify the un assigned red indication of input b
     #(CLK_PERIOD*3);
 
     @(posedge clk);
@@ -53,11 +56,12 @@ module full_adder_tb ();
     b  <= 0;
     c_in <= 1;
 
-    #(CLK_PERIOD*2);
+    #(CLK_PERIOD*2); // leave two clock cycle delay
     @(posedge clk);
     a  <= 1;
     b  <= 1;
     c_in <= 0;
+
     @(posedge clk);
     a  <= 1;
     b  <= 1;
